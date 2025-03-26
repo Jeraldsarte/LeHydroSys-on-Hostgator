@@ -2,17 +2,20 @@ from flask import Flask, request, jsonify
 import pymysql  # Use pymysql instead of mysql.connector for HostGator
 import os
 import time
+import config
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
 
-# Load Database Configuration from Environment Variables (or manually define them)
+
 DB_CONFIG = {
-    "host": os.getenv("MYSQL_HOST", "your_hostgator_db_host"),
-    "user": os.getenv("MYSQL_USER", "your_hostgator_username"),
-    "password": os.getenv("MYSQL_PASSWORD", "your_hostgator_password"),
-    "database": os.getenv("MYSQL_DATABASE", "your_hostgator_database"),
+    "host": config.MYSQL_HOST,
+    "user": config.MYSQL_USER,
+    "password": config.MYSQL_PASSWORD,
+    "database": config.MYSQL_DATABASE,
+}
+
 }
 
 # Function to create a new database connection
